@@ -16,15 +16,24 @@
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{566df306-886a-4209-9637-81fa7e7f15c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{c61451cc-c616-4616-a306-1910b7af7062}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\mathUtils.cpp">
       <Filter>Source Files\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Core\memory.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\mathUtils.h">
       <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\memory.h">
+      <Filter>Source Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

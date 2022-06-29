@@ -131,9 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\memory.cpp" />
     <ClCompile Include="Math\mathUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\memory.h" />
     <ClInclude Include="Math\mathUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
