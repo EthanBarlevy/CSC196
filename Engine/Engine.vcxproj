@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="Core\memory.h" />
     <ClInclude Include="Math\mathUtils.h" />
+    <ClInclude Include="Math\random.h" />
     <ClInclude Include="Renderer\renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

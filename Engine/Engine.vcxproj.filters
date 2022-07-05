@@ -44,5 +44,8 @@
     <ClInclude Include="Renderer\renderer.h">
       <Filter>Source Files\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Math\random.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
