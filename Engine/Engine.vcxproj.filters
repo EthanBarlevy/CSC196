@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{c61451cc-c616-4616-a306-1910b7af7062}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{1efe30a6-7ba3-4fa5-b058-ff2afc4609b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\mathUtils.cpp">
@@ -27,6 +30,9 @@
     <ClCompile Include="Core\memory.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\mathUtils.h">
@@ -34,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="Core\memory.h">
       <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\renderer.h">
+      <Filter>Source Files\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
