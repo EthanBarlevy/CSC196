@@ -22,7 +22,7 @@ namespace vl
 
 	void Renderer::BeginFrame()
 	{
-		SDL_SetRenderDrawColor(m_renderer, 0, 0, 70, 255);
+		SDL_SetRenderDrawColor(m_renderer, m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
 		SDL_RenderClear(m_renderer);
 	}
 
@@ -40,5 +40,17 @@ namespace vl
 	{
 		SDL_SetRenderDrawColor(m_renderer, 255, 255, 255, 255);
 		SDL_RenderDrawPointF(m_renderer, x, y);
+	}
+
+	void Renderer::DrawLine(const Vector2& v1, const Vector2& v2, const Color& color)
+	{
+		SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
+		SDL_RenderDrawLineF(m_renderer, v1.x, v1.y, v2.x, v2.y);
+	}
+
+	void Renderer::DrawPoint(const Vector2& v, const Color& color)
+	{
+		SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
+		SDL_RenderDrawPointF(m_renderer, v.x, v.y);
 	}
 }
