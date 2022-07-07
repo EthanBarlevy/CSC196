@@ -152,11 +152,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\memory.cpp" />
+    <ClCompile Include="Input\inputSystem.cpp" />
     <ClCompile Include="Math\mathUtils.cpp" />
     <ClCompile Include="Renderer\renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\memory.h" />
+    <ClInclude Include="Input\inputSystem.h" />
     <ClInclude Include="Math\Color.h" />
     <ClInclude Include="Math\mathUtils.h" />
     <ClInclude Include="Math\random.h" />

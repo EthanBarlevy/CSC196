@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Renderer">
       <UniqueIdentifier>{1efe30a6-7ba3-4fa5-b058-ff2afc4609b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{171fab73-c03a-475d-b36c-8a4972b8a7a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\mathUtils.cpp">
@@ -32,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="Renderer\renderer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\inputSystem.cpp">
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="Math\Color.h">
       <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\inputSystem.h">
+      <Filter>Source Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #include "Math/mathUtils.h"
 #include "Math/random.h"
 #include "Core/memory.h"
+#include "Input/InputSystem.h"
 #include "Renderer/renderer.h"
 #include <iostream>
 #include <vector>
@@ -10,29 +11,26 @@ using namespace std;
 
 int main()
 {
-	vl::seedRandom(8763243);
-	for (int i = 0; i < 10; i++) {
-		cout << vl::randomf(5, 10) << endl;
-	}
+	vector<vl::Vector2> model{
+		{ 0.00, -6.00 },
+		{ -4.00, 0.00 },
+		{ -2.00, 2.00 },
+		{ 0.00, 0.00 },
+		{ 2.00, 2.00 },
+		{ 4.00, 0.00 },
+		{ 0.00, -6.00 }
+	};
 
-	vl::Vector2 v1;
-	v1.x = 30;
-	v1.y = 121;
-
-	vl::Vector2 move{ 3,0 };
-
-	vector<vl::Vector2> model;
-	model.push_back(vl::Vector2(34, 97));
-	model.push_back(vl::Vector2(35, 42));
-	model.push_back(vl::Vector2(85, 35));
-	model.push_back(vl::Vector2(17, 94));
-	model.push_back(vl::Vector2(45, 39));
+	vl::Vector2 position{ 250, 250 };
 
 
 	vl::InitializeMemory();
 
 	vl::Renderer renderer;
+	vl::InputSystem inputSystem;
+
 	renderer.Initialize();
+	inputSystem.Initialize();
 
 	renderer.CreateWindow("Gaming", 500, 500);
 	renderer.setClearColor(vl::Color{ 51, 51, 51, 255 });
@@ -42,22 +40,44 @@ int main()
 
 	while (1)
 	{
+		// update
+		inputSystem.Update();
+
+		if (inputSystem.GetKeyState(vl::key_left))
+		{
+			position.x -= 2.0;
+		}
+		if (inputSystem.GetKeyState(vl::key_right))
+		{
+			position.x += 2.0;
+		}
+		if (inputSystem.GetKeyState(vl::key_up))
+		{
+			position.y -= 2.0;
+		}
+		if (inputSystem.GetKeyState(vl::key_down))
+		{
+			position.y += 2.0;
+		}
+
+		//render
 		renderer.BeginFrame();
 
 		// draw
 		color.r = vl::random(256);
 		color.g = vl::random(256);
 		color.b = vl::random(256);
-		renderer.DrawPoint(v1, color);
 
-		for (auto& v : model)
-		{
-			v += move;
-		}
+		//for (auto& v : model)
+		//{
+		//	v += move;
+		//}
 
 		for (int i = 0; i < model.size(); i++) 
 		{
-			renderer.DrawLine(model[i], model[(i + 1) % model.size()], color);
+			vl::Vector2 p1 = (model[i] * 5)+ position;
+			vl::Vector2 p2 = (model[(i + 1) % model.size()] * 5) + position;
+			renderer.DrawLine(p1, p2, color);
 		}
 
 		//renderer.DrawLine(vl::Vector2{ vl::randomf(500), vl::randomf(500) }, vl::Vector2{ vl::randomf(500), vl::randomf(500) }, color);
