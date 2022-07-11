@@ -7,6 +7,14 @@ namespace vl
 	class InputSystem
 	{
 	public:
+		enum State
+		{
+			Idle,
+			Pressed,
+			Held,
+			Released
+		};
+	public:
 		InputSystem() = default;
 		~InputSystem() = default;
 
@@ -15,7 +23,7 @@ namespace vl
 
 		void Update();
 
-		bool GetKeyState(int key) { return m_keybardState[key]; }
+		bool GetKeyDown(int key) { return m_keybardState[key]; }
 
 	private:
 		int m_numKeys;
@@ -28,4 +36,5 @@ namespace vl
 	extern const uint32_t key_down;
 	extern const uint32_t key_left;
 	extern const uint32_t key_right;
+	extern const uint32_t key_escape;
 }

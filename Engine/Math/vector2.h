@@ -27,5 +27,8 @@ namespace vl
 		Vector2 operator / (float s) {return Vector2{ this->x / s, this->y / s }; }
 
 		Vector2& operator += (float s) { this->x += s; this->y += s; return *this; }
+		Vector2& operator -= (float s) { this->x -= s; this->y -= s; return *this; }
+		Vector2& operator *= (float s) { this->x *= s; this->y *= s; return *this; }
+		Vector2& operator /= (float s) { this->x /= s; this->y /= s; return *this; }
 	};
 }

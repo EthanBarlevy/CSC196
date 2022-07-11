@@ -9,6 +9,7 @@ namespace vl
 	const uint32_t key_down = SDL_SCANCODE_DOWN;
 	const uint32_t key_left = SDL_SCANCODE_LEFT;
 	const uint32_t key_right = SDL_SCANCODE_RIGHT;
+	const uint32_t key_escape = SDL_SCANCODE_ESCAPE;
 
 	void InputSystem::Initialize()
 	{
