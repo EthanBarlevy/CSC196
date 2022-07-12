@@ -1,8 +1,8 @@
-#include "Model.h"
+#include "model.h"
 
 namespace vl 
 {
-	void Model::Draw(Renderer& renderer, const Vector2& position, float scale)
+	void Model::Draw(Renderer& renderer, const Vector2& position, float angle, float scale)
 	{
 		// draw
 		// 
@@ -15,8 +15,8 @@ namespace vl
 
 		for (int i = 0; i < m_points.size(); i++)
 		{
-			vl::Vector2 p1 = (m_points[i] * scale) + position;
-			vl::Vector2 p2 = (m_points[(i + 1) % m_points.size()] * scale) + position;
+			vl::Vector2 p1 = Vector2::Rotate((m_points[i] * scale), angle) + position;
+			vl::Vector2 p2 = Vector2::Rotate((m_points[(i + 1) % m_points.size()] * scale), angle) + position;
 
 			renderer.DrawLine(p1, p2, m_color);
 		}

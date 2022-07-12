@@ -4,6 +4,10 @@
 
 namespace math 
 {
+	const float PI = 3.14159265359f;
+	const float TWOPI = 6.28318530718f;
+	const float HALFPI = 1.57079632679f;
+
 	int sqr(int i);
 	// inline is a workaround for defining functions in a header
 	inline int half(int i) { return i / 2; } // it doenst actualy call it, it repaces the call with the definition

@@ -2,7 +2,7 @@
 #include "Math/random.h"
 #include "Core/memory.h"
 #include "Core/file.h"
-#include "Input/InputSystem.h"
+#include "Input/inputSystem.h"
 #include "Renderer/renderer.h"
 #include "Renderer/model.h"
 #include <iostream>
@@ -24,14 +24,16 @@ int main()
 	vl::ReadFile("Model.txt", buffer);
 	cout << buffer << endl;
 
+	float angle = 0;
+
 	vector<vl::Vector2> points{
-		{ 0.00, -6.00 },
-		{ -4.00, 0.00 },
-		{ -2.00, 2.00 },
-		{ 0.00, 0.00 },
-		{ 2.00, 2.00 },
-		{ 4.00, 0.00 },
-		{ 0.00, -6.00 }
+		{ 0.00f, -6.00 },
+		{ -4.00f, 0.00 },
+		{ -2.00f, 2.00 },
+		{ 0.00f, 0.00 },
+		{ 2.00f, 2.00 },
+		{ 4.00f, 0.00 },
+		{ 0.00f, -6.00 }
 	};
 	vl::Model model(points, vl::Color{ 255, 255, 255, 255 });
 
@@ -62,25 +64,39 @@ int main()
 
 		if (inputSystem.GetKeyDown(vl::key_left))
 		{
-			position.x -= 2.0;
+			angle -= 0.03;
 		}
+
 		if (inputSystem.GetKeyDown(vl::key_right))
 		{
-			position.x += 2.0;
+			angle += 0.03;
 		}
+
+		float thrust = 0;
 		if (inputSystem.GetKeyDown(vl::key_up))
 		{
-			position.y -= 2.0;
+			thrust = 2;
 		}
-		if (inputSystem.GetKeyDown(vl::key_down))
+
+		vl::Vector2 direction{ 0, -1 };
+		direction = vl::Vector2::Rotate(direction, angle);
+		position += (direction * thrust);
+
+		//if (inputSystem.GetKeyDown(vl::key_down))
+		//{
+		//	position.y += 2.0;
+		//}
+
+		if (inputSystem.GetButtonDown(vl::button_left))
 		{
-			position.y += 2.0;
+			cout << inputSystem.GetButtonState(vl::button_left) << "  :  " << inputSystem.GetMousePosition().x << ", " << inputSystem.GetMousePosition().y << endl;
 		}
+
 
 		//render
 		renderer.BeginFrame();
 
-		model.Draw(renderer, position, 7.0);
+		model.Draw(renderer, position, angle, 7);
 
 		renderer.EndFrame();
 	}

@@ -11,7 +11,7 @@ namespace vl
 		Model(const std::vector<vl::Vector2>& points, const vl::Color& color) : m_points{ points }, m_color{ color } {}
 		~Model() = default;
 
-		void Draw(Renderer& renderer, const Vector2& position, float scale);
+		void Draw(Renderer& renderer, const Vector2& position, float angle, float scale = 1);
 
 	private:
 		vl::Color m_color;

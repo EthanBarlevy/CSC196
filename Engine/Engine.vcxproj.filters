@@ -39,7 +39,7 @@
     <ClCompile Include="Renderer\renderer.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer\Model.cpp">
+    <ClCompile Include="Renderer\model.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Core\file.cpp">
@@ -62,13 +62,13 @@
     <ClInclude Include="Math\vector2.h">
       <Filter>Source Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Math\Color.h">
+    <ClInclude Include="Math\color.h">
       <Filter>Source Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="Input\inputSystem.h">
       <Filter>Source Files\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer\Model.h">
+    <ClInclude Include="Renderer\model.h">
       <Filter>Source Files\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Core\file.h">
