@@ -21,4 +21,14 @@ namespace vl
 			renderer.DrawLine(p1, p2, m_color);
 		}
 	}
+	void Model::Draw(Renderer& renderer, const Transform& transform)
+	{
+		for (int i = 0; i < m_points.size(); i++)
+		{
+			vl::Vector2 p1 = Vector2::Rotate((m_points[i] * transform.scale), transform.rotation) + transform.position;
+			vl::Vector2 p2 = Vector2::Rotate((m_points[(i + 1) % m_points.size()] * transform.scale), transform.rotation) + transform.position;
+
+			renderer.DrawLine(p1, p2, m_color);
+		}
+	}
 }

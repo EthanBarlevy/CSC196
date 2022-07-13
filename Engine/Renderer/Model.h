@@ -1,5 +1,6 @@
 #pragma once
 #include "renderer.h"
+#include "../Math/transform.h"
 #include <vector>
 
 namespace vl 
@@ -12,6 +13,7 @@ namespace vl
 		~Model() = default;
 
 		void Draw(Renderer& renderer, const Vector2& position, float angle, float scale = 1);
+		void Draw(Renderer& renderer, const Transform& transform);
 
 	private:
 		vl::Color m_color;

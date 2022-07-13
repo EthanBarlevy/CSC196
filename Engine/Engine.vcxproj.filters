@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Input">
       <UniqueIdentifier>{171fab73-c03a-475d-b36c-8a4972b8a7a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{6c3bcd5f-79a3-41ea-97f0-2dc3c9a6dee7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\mathUtils.cpp">
@@ -44,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="Core\file.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\actor.cpp">
+      <Filter>Source Files\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,15 @@
     </ClInclude>
     <ClInclude Include="Core\file.h">
       <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\gameObject.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\transform.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\actor.h">
+      <Filter>Source Files\Framework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

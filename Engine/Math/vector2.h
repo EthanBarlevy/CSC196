@@ -52,6 +52,7 @@ namespace vl
 		Vector2 Normalized();
 		void Normalize();
 
+		float GetAngle();
 		static Vector2 Rotate(const Vector2& v, float angle);
 
 	};
@@ -86,6 +87,11 @@ namespace vl
 		inline void Vector2::Normalize()
 		{
 			*this /= Length();
+		}
+
+		inline float Vector2::GetAngle()
+		{
+			return std::atan2(y, x);
 		}
 
 		inline Vector2 Vector2::Rotate(const Vector2& v, float angle)
