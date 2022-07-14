@@ -1,5 +1,7 @@
 #pragma once
 #include <cmath>
+#include <sstream>
+#include <string>
 #include <ostream>
 
 namespace vl
@@ -56,6 +58,25 @@ namespace vl
 		static Vector2 Rotate(const Vector2& v, float angle);
 
 	};
+
+	inline std::istream& operator >> (std::istream& stream, Vector2& v)
+	{
+		std::string line;
+		std::getline(stream, line);
+
+		// { ##, ## }
+		int start = line.find("{") + 1;
+		int middle = line.find(",");
+		int end = line.find("}");
+
+		std::string xs = line.substr(start, middle - start - 1);
+		v.x = std::stof(xs);
+
+		std::string ys = line.substr(middle + 1, end - middle - 2);
+		v.y = std::stof(ys);
+
+		return stream;
+	}
 
 		inline float Vector2::LengthSqr() 
 		{ 

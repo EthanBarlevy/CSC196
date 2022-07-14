@@ -1,4 +1,7 @@
 #include "model.h"
+#include "../Core/file.h"
+#include <sstream>
+#include <iostream>
 
 namespace vl 
 {
@@ -30,5 +33,35 @@ namespace vl
 
 			renderer.DrawLine(p1, p2, m_color);
 		}
+	}
+	void Model::Load(const std::string& filename)
+	{
+		std::string buffer;
+		vl::ReadFile(filename, buffer);
+
+		// color not yet implimented
+		m_color.r = 255;
+		m_color.g = 255;
+		m_color.b = 255;
+		m_color.a = 255;
+
+		std::istringstream stream(buffer);
+		std::string line;
+		std::getline(stream, line);
+
+		// get num of points
+		size_t numPoints = std::stoi(line);
+
+		// read points
+		for (size_t i = 0; i < numPoints; i++)
+		{
+			Vector2 point;
+
+			stream >> point;
+
+			m_points.push_back(point);
+		}
+
+		std::cout << line << std::endl;
 	}
 }

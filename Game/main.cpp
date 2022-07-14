@@ -1,11 +1,5 @@
-#include "Math/mathUtils.h"
-#include "Math/random.h"
-#include "Core/memory.h"
-#include "Core/file.h"
-#include "Input/inputSystem.h"
-#include "Renderer/renderer.h"
-#include "Renderer/model.h"
 #include "player.h"
+#include "engine.h"
 #include <iostream>
 #include <vector>
 
@@ -24,86 +18,47 @@ int main()
 	
 	// model
 	vector<vl::Vector2> points{
-		{ 0.00f, -6.00 },
-		{ -4.00f, 0.00 },
-		{ -2.00f, 2.00 },
+		{ 7.00f, 0.00 },
+		{ 0.00f, -4.00 },
+		{ -2.00f, -2.00 },
 		{ 0.00f, 0.00 },
-		{ 2.00f, 2.00 },
-		{ 4.00f, 0.00 },
-		{ 0.00f, -6.00 }
+		{ -2.00f, 2.00 },
+		{ 0.00f, 4.00 }
 	};
-	vl::Model model(points, vl::Color{ 255, 255, 255, 255 });
+	//vl::Model model(points, vl::Color{ 255, 255, 255, 255 });
+	vl::Model model;
+	model.Load("Model.txt");
 
 	tlr::Player player{ model, transform };
 
 	vl::InitializeMemory();
+	
 
-	// create systems
-	vl::Renderer renderer;
-	vl::InputSystem inputSystem;
-
-	renderer.Initialize();
-	inputSystem.Initialize();
+	g_renderer.Initialize();
+	g_inputSystem.Initialize();
 
 	// create window
-	renderer.CreateWindow("Gaming", 500, 500);
-	renderer.setClearColor(vl::Color{ 51, 51, 51, 255 });
-	
+	g_renderer.CreateWindow("Gaming", 500, 500);
+	g_renderer.setClearColor(vl::Color{ 51, 51, 51, 255 });
 	
 
 	bool quit = false;
 	while (!quit)
 	{
 		// update
-		inputSystem.Update();
+		g_inputSystem.Update();
 
-		if (inputSystem.GetKeyDown(vl::key_escape)) quit = true;
+		if (g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
 
-
-		if (inputSystem.GetKeyDown(vl::key_left))
-		{
-			player.GetTransform().rotation -= 0.03;
-		}
-
-		if (inputSystem.GetKeyDown(vl::key_right))
-		{
-			player.GetTransform().rotation += 0.03;
-		}
-
-		float thrust = 0;
-		if (inputSystem.GetKeyDown(vl::key_up))
-		{
-			thrust = 3;
-		}
-
-		// face target
-		vl::Vector2 target = inputSystem.GetMousePosition();
-		target -= player.GetTransform().position;
-		player.GetTransform().rotation = target.GetAngle();
-
-		vl::Vector2 direction{ 1, 0 };
-		direction = vl::Vector2::Rotate(direction, player.GetTransform().rotation);
-
-		player.GetTransform().position += (direction * thrust);
-
-		//if (inputSystem.GetKeyDown(vl::key_down))
-		//{
-		//	position.y += 2.0;
-		//}
-
-		if (inputSystem.GetButtonDown(vl::button_left))
-		{
-			cout << inputSystem.GetButtonState(vl::button_left) << "  :  " << inputSystem.GetMousePosition().x << ", " << inputSystem.GetMousePosition().y << endl;
-		}
-
+		player.Update();
 
 		//render
-		renderer.BeginFrame();
+		g_renderer.BeginFrame();
 
-		player.Draw(renderer);
+		player.Draw(g_renderer);
 
-		renderer.EndFrame();
+		g_renderer.EndFrame();
 	}
 
-	renderer.Shutodwn();
+	g_renderer.Shutodwn();
 }

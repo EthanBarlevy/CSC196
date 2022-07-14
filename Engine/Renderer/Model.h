@@ -15,6 +15,8 @@ namespace vl
 		void Draw(Renderer& renderer, const Vector2& position, float angle, float scale = 1);
 		void Draw(Renderer& renderer, const Transform& transform);
 
+		void Load(const std::string& filename);
+
 	private:
 		vl::Color m_color;
 		std::vector<vl::Vector2> m_points;
