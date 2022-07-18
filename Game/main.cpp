@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+
 	vl::SetFilePath("../Assets");
 
 	// transforms
@@ -47,6 +48,9 @@ int main()
 	{
 		// update
 		g_inputSystem.Update();
+		g_time.Tick();
+
+		//cout << g_time.deltaTime << endl;
 
 		if (g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
 

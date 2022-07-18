@@ -16,6 +16,6 @@ namespace tlr
 
 	private:
 		float m_speed{ 0 };
-		float m_maxSpeed{ 5 };
+		float m_maxSpeed{ 200 };
 	};
 }

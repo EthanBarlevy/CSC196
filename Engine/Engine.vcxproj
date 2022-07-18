@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="Core\file.cpp" />
     <ClCompile Include="Core\memory.cpp" />
+    <ClCompile Include="Core\time.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="Framework\actor.cpp" />
     <ClCompile Include="Input\inputSystem.cpp" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="Core\file.h" />
     <ClInclude Include="Core\memory.h" />
+    <ClInclude Include="Core\time.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="Framework\actor.h" />
     <ClInclude Include="Framework\gameObject.h" />

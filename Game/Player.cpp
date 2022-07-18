@@ -8,12 +8,12 @@ namespace tlr
 		// rotate with left-right
 		if (g_inputSystem.GetKeyDown(vl::key_left))
 		{
-			m_transform.rotation -= 0.03f;
+			m_transform.rotation -= math::PI * g_time.deltaTime;
 		}
 
 		if (g_inputSystem.GetKeyDown(vl::key_right))
 		{
-			m_transform.rotation += 0.03f;
+			m_transform.rotation += math::PI * g_time.deltaTime;
 		}
 
 		// move input
@@ -32,7 +32,7 @@ namespace tlr
 		vl::Vector2 direction{ 1, 0 };
 		direction = vl::Vector2::Rotate(direction, m_transform.rotation);
 
-		m_transform.position += (direction * m_speed);
+		m_transform.position += (direction * m_speed * g_time.deltaTime);
 
 		// mouse input
 		if (g_inputSystem.GetButtonDown(vl::button_left))

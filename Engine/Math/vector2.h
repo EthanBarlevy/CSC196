@@ -65,9 +65,9 @@ namespace vl
 		std::getline(stream, line);
 
 		// { ##, ## }
-		int start = line.find("{") + 1;
-		int middle = line.find(",");
-		int end = line.find("}");
+		size_t start = line.find("{") + 1;
+		size_t middle = line.find(",");
+		size_t end = line.find("}");
 
 		std::string xs = line.substr(start, middle - start - 1);
 		v.x = std::stof(xs);
