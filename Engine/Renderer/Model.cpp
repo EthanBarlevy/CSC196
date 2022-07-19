@@ -5,6 +5,11 @@
 
 namespace vl 
 {
+	Model::Model(const std::string& filename)
+	{
+		Load(filename);
+	}
+
 	void Model::Draw(Renderer& renderer, const Vector2& position, float angle, float scale)
 	{
 		// draw
@@ -39,13 +44,11 @@ namespace vl
 		std::string buffer;
 		vl::ReadFile(filename, buffer);
 
-		// color not yet implimented
-		m_color.r = 255;
-		m_color.g = 255;
-		m_color.b = 255;
-		m_color.a = 255;
-
+		// color being implemented 
 		std::istringstream stream(buffer);
+		stream >> m_color;
+
+		// read number of points 
 		std::string line;
 		std::getline(stream, line);
 

@@ -160,6 +160,7 @@
     <ClCompile Include="Core\time.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="Framework\actor.cpp" />
+    <ClCompile Include="Framework\scene.cpp" />
     <ClCompile Include="Input\inputSystem.cpp" />
     <ClCompile Include="Math\mathUtils.cpp" />
     <ClCompile Include="Renderer\model.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="engine.h" />
     <ClInclude Include="Framework\actor.h" />
     <ClInclude Include="Framework\gameObject.h" />
+    <ClInclude Include="Framework\scene.h" />
     <ClInclude Include="Input\inputSystem.h" />
     <ClInclude Include="Math\color.h" />
     <ClInclude Include="Math\mathUtils.h" />

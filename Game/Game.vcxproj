@@ -139,6 +139,11 @@
   <ItemGroup>
     <ClInclude Include="Player.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\Enemy.txt" />
+    <Text Include="..\Build\Assets\Player.txt" />
+    <Text Include="..\Build\Assets\Rocket.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

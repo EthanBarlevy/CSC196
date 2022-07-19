@@ -11,6 +11,8 @@ int main()
 
 	vl::SetFilePath("../Assets");
 
+	vl::Scene scene;
+
 	// transforms
 	vl::Transform transform;
 	transform.position = vl::Vector2{ 250, 250 };
@@ -18,23 +20,18 @@ int main()
 	transform.scale = 7;
 	
 	// model
-	vector<vl::Vector2> points{
-		{ 7.00f, 0.00 },
-		{ 0.00f, -4.00 },
-		{ -2.00f, -2.00 },
-		{ 0.00f, 0.00 },
-		{ -2.00f, 2.00 },
-		{ 0.00f, 4.00 }
-	};
-	//vl::Model model(points, vl::Color{ 255, 255, 255, 255 });
-	vl::Model model;
-	model.Load("Model.txt");
+	for (int i = 0; i < 20; i++) 
+	{
+		transform.position.x = vl::randomf(500);
+		transform.position.y = vl::randomf(500);
+		transform.scale = vl::randomf(1, 7);
 
-	tlr::Player player{ model, transform };
+		std::unique_ptr<tlr::Player> player = std::make_unique<tlr::Player>(vl::Model{ "Enemy.txt" }, transform);
+		scene.Add(std::move(player));
+	
+	}
 
 	vl::InitializeMemory();
-	
-
 	g_renderer.Initialize();
 	g_inputSystem.Initialize();
 
@@ -54,12 +51,12 @@ int main()
 
 		if (g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
 
-		player.Update();
+		scene.Update();
 
 		//render
 		g_renderer.BeginFrame();
 
-		player.Draw(g_renderer);
+		scene.Draw(g_renderer);
 
 		g_renderer.EndFrame();
 	}

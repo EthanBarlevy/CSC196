@@ -57,6 +57,9 @@
     <ClCompile Include="Core\time.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\scene.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\mathUtils.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="Core\time.h">
       <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\scene.h">
+      <Filter>Source Files\Framework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

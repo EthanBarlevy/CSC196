@@ -23,4 +23,15 @@
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\Enemy.txt">
+      <Filter>Resources</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Player.txt">
+      <Filter>Resources</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Rocket.txt">
+      <Filter>Resources</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
