@@ -18,6 +18,7 @@ namespace vl
 	}
 	void Scene::Add(std::unique_ptr<Actor> actor)
 	{
+		actor->scene = this;
 		m_actors.push_back(std::move(actor));
 	}
 }

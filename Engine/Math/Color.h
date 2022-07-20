@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <iostream>
 
 namespace vl
 {
@@ -8,15 +9,24 @@ namespace vl
 	struct Color 
 	{
 		uint8_t r, g, b, a;
+
+		friend std::istream& operator >> (std::istream& stream, Color& c);
 	};
 	inline std::istream& operator >> (std::istream& stream, Color& c)
 	{
 		std::string line;
 		std::getline(stream, line);
 
-		c.r = 255;
-		c.g = 255;
-		c.b = 255;
+		std::string str;
+		// { #, #, # }
+		str = line.substr(line.find("{") + 2, line.find(",") - (line.find("{") + 2));
+		c.r = (uint8_t)(stof(str) * 255);
+
+		str = line.substr(line.find(",") + 2, (line.find(",", line.find(",") + 1) + 2 - line.find(",") + 2));
+		c.g = (uint8_t)(stof(str) * 255);
+
+		str = line.substr(line.find(",", line.find(",") + 1) + 2, line.find("}", line.find(",", line.find(",") + 1)));
+		c.b = (uint8_t)(stof(str) * 255);
 
 		c.a = 255;
 

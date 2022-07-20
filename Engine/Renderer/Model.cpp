@@ -65,6 +65,6 @@ namespace vl
 			m_points.push_back(point);
 		}
 
-		std::cout << line << std::endl;
+		//std::cout << line << std::endl;
 	}
 }

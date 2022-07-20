@@ -1,13 +1,15 @@
-#include "player.h"
+#include "Player.h"
+#include "Enemy.h"
 #include "engine.h"
 #include <iostream>
 #include <vector>
-
+#include <algorithm>
 
 using namespace std;
 
 int main()
 {
+	vl::InitializeMemory();
 
 	vl::SetFilePath("../Assets");
 
@@ -19,47 +21,51 @@ int main()
 	transform.rotation = 0;
 	transform.scale = 7;
 	
-	// model
+	//players
+	std::unique_ptr<tlr::Player> player = std::make_unique<tlr::Player>(vl::Model{ "Player.txt" }, transform);
+	scene.Add(std::move(player));
+
+	// enemies
 	for (int i = 0; i < 20; i++) 
 	{
 		transform.position.x = vl::randomf(500);
 		transform.position.y = vl::randomf(500);
+		transform.rotation = vl::randomf(math::TWOPI);
 		transform.scale = vl::randomf(1, 7);
 
-		std::unique_ptr<tlr::Player> player = std::make_unique<tlr::Player>(vl::Model{ "Enemy.txt" }, transform);
-		scene.Add(std::move(player));
+		std::unique_ptr<tlr::Enemy> enemy = std::make_unique<tlr::Enemy>(vl::Model{ "Enemy.txt" }, transform);
+		scene.Add(std::move(enemy));
 	
 	}
 
-	vl::InitializeMemory();
-	g_renderer.Initialize();
-	g_inputSystem.Initialize();
+	vl::g_renderer.Initialize();
+	vl::g_inputSystem.Initialize();
 
 	// create window
-	g_renderer.CreateWindow("Gaming", 500, 500);
-	g_renderer.setClearColor(vl::Color{ 51, 51, 51, 255 });
+	vl::g_renderer.CreateWindow("Gaming", 500, 500);
+	vl::g_renderer.setClearColor(vl::Color{ 51, 51, 51, 255 });
 	
 
 	bool quit = false;
 	while (!quit)
 	{
 		// update
-		g_inputSystem.Update();
-		g_time.Tick();
+		vl::g_inputSystem.Update();
+		vl::g_time.Tick();
 
 		//cout << g_time.deltaTime << endl;
 
-		if (g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
+		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
 
 		scene.Update();
 
 		//render
-		g_renderer.BeginFrame();
+		vl::g_renderer.BeginFrame();
 
-		scene.Draw(g_renderer);
+		scene.Draw(vl::g_renderer);
 
-		g_renderer.EndFrame();
+		vl::g_renderer.EndFrame();
 	}
 
-	g_renderer.Shutodwn();
+	vl::g_renderer.Shutodwn();
 }
