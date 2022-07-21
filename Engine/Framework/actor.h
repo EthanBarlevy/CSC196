@@ -10,15 +10,20 @@ namespace vl
 	{
 	public:
 		Actor() = default;
-		Actor(const Model& model, const Transform& transform) : GameObject{ transform }, m_model{ model }, scene{ nullptr }{}
+		Actor(const Model& model, const Transform& transform) : GameObject{ transform }, m_model{ model }, m_scene{ nullptr }{}
 
 		virtual void Update() override {}
 		virtual void Draw(Renderer& renderer);
 
-	public:
-		Scene* scene;
+		friend class Scene;
 
 	protected:
 		Model m_model;
+		Scene* m_scene;
+
+		bool m_destroy{ false };
+		// physics
+		Vector2 m_velocity;
+		float m_damping = 1;
 	};
 }

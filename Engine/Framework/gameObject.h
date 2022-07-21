@@ -14,8 +14,8 @@ namespace vl
 
 		Transform& GetTransform() { return m_transform; }
 
-	protected:
 		Transform m_transform;
+	protected:
 
 	};
 }

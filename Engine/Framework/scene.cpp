@@ -1,14 +1,26 @@
 #include "scene.h"
+#include <algorithm>
 
 namespace vl
 {
 	void Scene::Update()
 	{
-		for (auto& actor : m_actors) 
+		auto iter = m_actors.begin();
+
+		while (iter != m_actors.end())
 		{
-			actor->Update();
+			(*iter)->Update();
+			if ((*iter)->m_destroy)
+			{
+				iter = m_actors.erase(iter);
+			}
+			else
+			{
+				iter++;
+			}
 		}
 	}
+
 	void Scene::Draw(Renderer& renderer)
 	{
 		for (auto& actor : m_actors)
@@ -16,9 +28,10 @@ namespace vl
 			actor->Draw(renderer);
 		}
 	}
+
 	void Scene::Add(std::unique_ptr<Actor> actor)
 	{
-		actor->scene = this;
+		actor->m_scene = this;
 		m_actors.push_back(std::move(actor));
 	}
 }

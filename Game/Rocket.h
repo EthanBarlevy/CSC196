@@ -16,5 +16,6 @@ namespace tlr
 
 	private:
 		float m_speed{ 200 };
+		float m_lifespan{ 2 };
 	};
 }

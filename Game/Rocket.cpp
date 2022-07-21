@@ -5,9 +5,15 @@ namespace tlr
 {
 	void Rocket::Update()
 	{
+
+		m_lifespan -= vl::g_time.deltaTime;
+		if (m_lifespan <= 0) { m_destroy = true; }
+
 		vl::Vector2 direction{ 1, 0 };
 		direction = vl::Vector2::Rotate(direction, m_transform.rotation);
 
 		m_transform.position += (direction * m_speed * vl::g_time.deltaTime);
+
+			
 	}
 }
