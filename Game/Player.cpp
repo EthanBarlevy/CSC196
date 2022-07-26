@@ -9,12 +9,12 @@ namespace tlr
 		// rotate with left-right
 		if (vl::g_inputSystem.GetKeyDown(vl::key_left))
 		{
-			m_transform.rotation -= math::PI * vl::g_time.deltaTime;
+			m_transform.rotation -= math::PI * (float)vl::g_time.deltaTime;
 		}
 
 		if (vl::g_inputSystem.GetKeyDown(vl::key_right))
 		{
-			m_transform.rotation += math::PI * vl::g_time.deltaTime;
+			m_transform.rotation += math::PI * (float)vl::g_time.deltaTime;
 		}
 
 		// face target (mouse)
@@ -38,15 +38,15 @@ namespace tlr
 		// force
 		vl::Vector2 direction{ 1, 0 };
 		direction = vl::Vector2::Rotate(direction, m_transform.rotation);
-		vl::Vector2 force = (direction * m_speed * vl::g_time.deltaTime);
+		vl::Vector2 force = (direction * m_speed * (float)vl::g_time.deltaTime);
 		// acceleration
 		m_velocity += force;
 		// drag
 		m_damping = 1.50f;
-		m_velocity *= 1.0f / (1.0f + m_damping * vl::g_time.deltaTime);
+		m_velocity *= 1.0f / (1.0f + m_damping * (float)vl::g_time.deltaTime);
 
 		// move
-		m_transform.position += m_velocity * vl::g_time.deltaTime;
+		m_transform.position += m_velocity * (float)vl::g_time.deltaTime;
 
 		// shoot 
 		if (vl::g_inputSystem.GetKeyState(vl::key_space) == vl::g_inputSystem.Pressed)
@@ -54,6 +54,8 @@ namespace tlr
 			vl::Transform transform = m_transform;
 			std::unique_ptr<tlr::Rocket> rocket = std::make_unique<tlr::Rocket>(vl::Model{ "Rocket.txt" }, transform);
 			m_scene->Add(std::move(rocket));
+
+			vl::g_audioSystem.PlayAudio("laser");
 		}
 
 		//wrap

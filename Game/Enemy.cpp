@@ -8,13 +8,13 @@ namespace tlr
 	void Enemy::Initalize()
 	{
 		m_fire = vl::randomf(2, 6);
-		m_speed = vl::random(20, 70);
+		m_speed = vl::randomf(20, 70);
 	}
 
 	void Enemy::Update()
 	{
 		//shoot
-		m_fire -= vl::g_time.deltaTime;
+		m_fire -= (float)vl::g_time.deltaTime;
 		if (m_fire <= 0)
 		{
 			vl::Transform transform = m_transform;
@@ -34,7 +34,7 @@ namespace tlr
 		vl::Vector2 direction{ 1, 0 };
 		direction = vl::Vector2::Rotate(direction, m_transform.rotation);
 
-		m_transform.position += (direction * m_speed * vl::g_time.deltaTime);
+		m_transform.position += (direction * m_speed * (float)vl::g_time.deltaTime);
 
 		if (m_transform.position.x > vl::g_renderer.GetWidth()) m_transform.position.x = 0;
 		if (m_transform.position.x < 0) m_transform.position.x = (float)vl::g_renderer.GetWidth();

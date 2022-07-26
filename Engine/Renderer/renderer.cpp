@@ -1,17 +1,20 @@
 #include "renderer.h"
 #include <SDL.h>
+#include <SDL_ttf.h>
 
 namespace vl
 {
 	void Renderer::Initialize()
 	{
 		SDL_Init(SDL_INIT_VIDEO);
+		TTF_Init();
 	}
 
 	void Renderer::Shutodwn()
 	{
 		SDL_DestroyRenderer(m_renderer);
 		SDL_DestroyWindow(m_window);
+		TTF_Quit();
 	}
 
 	void Renderer::CreateWindow(const char* name, int width, int height)

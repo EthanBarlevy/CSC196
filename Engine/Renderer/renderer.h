@@ -35,6 +35,8 @@ namespace vl
 		int GetWidth() { return m_width; }
 		int GetHeight() { return m_height; }
 
+		friend class Text;
+
 	private:
 		int m_width = 0;
 		int m_height = 0;
