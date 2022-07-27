@@ -18,7 +18,7 @@ namespace vl
 		std::getline(stream, line);
 
 		std::string str;
-		// { #, #, # }
+		// { #, #, #}
 		str = line.substr(line.find("{") + 2, line.find(",") - (line.find("{") + 2));
 		c.r = (uint8_t)(stof(str) * 255);
 

@@ -2,6 +2,7 @@
 #include "gameObject.h"
 #include "../Renderer/model.h"
 
+
 namespace vl
 {
 	class Scene;
@@ -15,12 +16,18 @@ namespace vl
 		virtual void Update() override {}
 		virtual void Draw(Renderer& renderer);
 
+		virtual void OnCollision(Actor* other) {}
+		float GetRadius() { return m_model.GetRadius(); }
+
+		std::string& GetTag() { return m_tag; }
+
 		friend class Scene;
 
 	protected:
 		Model m_model;
 		Scene* m_scene;
 
+		std::string m_tag;
 		bool m_destroy{ false };
 		// physics
 		Vector2 m_velocity;

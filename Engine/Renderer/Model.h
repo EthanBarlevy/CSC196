@@ -18,9 +18,14 @@ namespace vl
 		void Draw(Renderer& renderer, const Transform& transform);
 
 		void Load(const std::string& filename);
+		float CalcRadius();
+
+		float GetRadius() { return m_radius; }
 
 	private:
 		vl::Color m_color{0, 0, 0, 0};
 		std::vector<vl::Vector2> m_points;
+
+		float m_radius = 0;
 	};
 }

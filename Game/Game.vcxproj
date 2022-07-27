@@ -142,9 +142,12 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rocket.h" />
+    <ClInclude Include="Section.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\Build\Assets\Duck.txt" />
     <Text Include="..\Build\Assets\Enemy.txt" />
+    <Text Include="..\Build\Assets\Jump.txt" />
     <Text Include="..\Build\Assets\Player.txt" />
     <Text Include="..\Build\Assets\Rocket.txt" />
   </ItemGroup>

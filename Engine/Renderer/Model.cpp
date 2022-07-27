@@ -8,19 +8,11 @@ namespace vl
 	Model::Model(const std::string& filename)
 	{
 		Load(filename);
+		m_radius = CalcRadius();
 	}
 
 	void Model::Draw(Renderer& renderer, const Vector2& position, float angle, float scale)
 	{
-		// draw
-		// 
-		//vl::Color color;
-		//color.a = 255;
-		//color.r = vl::random(256);
-		//color.g = vl::random(256);
-		//color.b = vl::random(256);
-
-
 		for (int i = 0; i < m_points.size(); i++)
 		{
 			vl::Vector2 p1 = Vector2::Rotate((m_points[i] * scale), angle) + position;
@@ -66,5 +58,18 @@ namespace vl
 		}
 
 		//std::cout << line << std::endl;
+	}
+
+	float Model::CalcRadius()
+	{
+		float rad = 0;
+
+		// find the largest radius
+		for (auto& point : m_points)
+		{
+			if (point.Length() > rad) rad = point.Length();
+		}
+
+		return rad;
 	}
 }

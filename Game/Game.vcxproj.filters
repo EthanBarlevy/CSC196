@@ -34,6 +34,9 @@
     <ClInclude Include="Enemy.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Section.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Build\Assets\Enemy.txt">
@@ -43,6 +46,12 @@
       <Filter>Resources</Filter>
     </Text>
     <Text Include="..\Build\Assets\Rocket.txt">
+      <Filter>Resources</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Duck.txt">
+      <Filter>Resources</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Jump.txt">
       <Filter>Resources</Filter>
     </Text>
   </ItemGroup>

@@ -26,14 +26,14 @@ int main()
 	scene.Add(std::move(player));
 
 	// enemies
-	for (int i = 0; i < 20; i++) 
+	for (int i = 0; i < 1; i++) 
 	{
 		transform.position.x = vl::randomf(500);
 		transform.position.y = vl::randomf(500);
 		transform.rotation = vl::randomf(math::TWOPI);
 		transform.scale = vl::randomf(1, 7);
 
-		std::unique_ptr<tlr::Enemy> enemy = std::make_unique<tlr::Enemy>(vl::Model{ "Enemy.txt" }, transform);
+		std::unique_ptr<tlr::Enemy> enemy = std::make_unique<tlr::Enemy>(vl::Model{ "Enemy.txt" }, transform, 6);
 		scene.Add(std::move(enemy));
 	
 	}
@@ -56,6 +56,8 @@ int main()
 	// audio
 	vl::g_audioSystem.AddAudio("laser", "idk.wav");
 
+	float spawnTimer = 2;
+
 	bool quit = false;
 	while (!quit)
 	{
@@ -66,8 +68,21 @@ int main()
 
 		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
 
-		scene.Update();
+		// spawn enemies
+		spawnTimer -= vl::g_time.deltaTime;
+		if (spawnTimer <= 0)
+		{
+			spawnTimer = vl::random(10);
+			transform.position.x = vl::randomf(500);
+			transform.position.y = vl::randomf(500);
+			transform.rotation = vl::randomf(math::TWOPI);
+			transform.scale = vl::randomf(1, 7);
 
+			std::unique_ptr<tlr::Enemy> enemy = std::make_unique<tlr::Enemy>(vl::Model{ "Enemy.txt" }, transform, 6);
+			scene.Add(std::move(enemy));
+		}
+
+		scene.Update();
 
 		//render
 		vl::g_renderer.BeginFrame();

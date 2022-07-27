@@ -18,7 +18,8 @@ namespace tlr
 		if (m_fire <= 0)
 		{
 			vl::Transform transform = m_transform;
-			std::unique_ptr<tlr::Rocket> rocket = std::make_unique<tlr::Rocket>(vl::Model{ "Rocket.txt" }, transform);
+			std::unique_ptr<tlr::Rocket> rocket = std::make_unique<tlr::Rocket>(vl::Model{ "Rocket.txt" }, transform, 2.0f);
+			rocket->GetTag() = "enemy";
 			m_scene->Add(std::move(rocket));
 			m_fire = vl::randomf(2, 6);
 		}
@@ -41,6 +42,14 @@ namespace tlr
 		if (m_transform.position.y > vl::g_renderer.GetHeight()) m_transform.position.y = 0;
 		if (m_transform.position.y < 0) m_transform.position.y = (float)vl::g_renderer.GetHeight();
 
+	}
+	void Enemy::OnCollision(Actor* other)
+	{
+		if (dynamic_cast<Rocket*>(other) && other->GetTag() == "player")
+		{
+			m_health -= dynamic_cast<Rocket*>(other)->GetDamage();;
+			if (m_health <= 0) m_destroy = true;
+		}
 	}
 }
 
