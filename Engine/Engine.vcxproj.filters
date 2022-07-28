@@ -128,5 +128,8 @@
     <ClInclude Include="Renderer\text.h">
       <Filter>Source Files\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\game.h">
+      <Filter>Source Files\Framework</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,11 +11,15 @@
 #include "Audio/audioSystem.h"
 
 #include "Framework/scene.h"
+#include "Framework/game.h"
 
 #include "Renderer/renderer.h"
 #include "Renderer/model.h"
 #include "Renderer/font.h"
 #include "Renderer/text.h"
+
+#include <memory>
+#include <vector>
 
 
 namespace vl

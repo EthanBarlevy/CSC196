@@ -128,10 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Blocker.cpp" />
+    <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="OnRailsObject.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rocket.cpp" />
+    <ClCompile Include="ThreeLaneRuunner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -139,12 +143,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Blocker.h" />
+    <ClInclude Include="Coin.h" />
+    <ClInclude Include="OnRailsObject.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rocket.h" />
-    <ClInclude Include="Section.h" />
+    <ClInclude Include="Spawner.h" />
+    <ClInclude Include="ThreeLaneRuunner.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\Build\Assets\Coin.txt" />
     <Text Include="..\Build\Assets\Duck.txt" />
     <Text Include="..\Build\Assets\Enemy.txt" />
     <Text Include="..\Build\Assets\Jump.txt" />

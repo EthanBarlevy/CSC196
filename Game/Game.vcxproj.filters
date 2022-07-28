@@ -23,6 +23,18 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="OnRailsObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Blocker.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreeLaneRuunner.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h">
@@ -34,7 +46,19 @@
     <ClInclude Include="Enemy.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Section.h">
+    <ClInclude Include="OnRailsObject.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Blocker.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreeLaneRuunner.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -52,6 +76,9 @@
       <Filter>Resources</Filter>
     </Text>
     <Text Include="..\Build\Assets\Jump.txt">
+      <Filter>Resources</Filter>
+    </Text>
+    <Text Include="..\Build\Assets\Coin.txt">
       <Filter>Resources</Filter>
     </Text>
   </ItemGroup>

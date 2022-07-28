@@ -3,7 +3,7 @@
 
 namespace tlr
 {
-	class Blocker;
+	class onRailsObject;
 
 	class Section
 	{

@@ -176,6 +176,7 @@
     <ClInclude Include="Core\time.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="Framework\actor.h" />
+    <ClInclude Include="Framework\game.h" />
     <ClInclude Include="Framework\gameObject.h" />
     <ClInclude Include="Framework\scene.h" />
     <ClInclude Include="Input\inputSystem.h" />

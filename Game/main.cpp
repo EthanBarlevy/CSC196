@@ -1,8 +1,6 @@
-#include "Player.h"
-#include "Enemy.h"
+#include "ThreeLaneRuunner.h"
 #include "engine.h"
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
@@ -13,87 +11,41 @@ int main()
 
 	vl::SetFilePath("../Assets");
 
-	vl::Scene scene;
-
-	// transforms
-	vl::Transform transform;
-	transform.position = vl::Vector2{ 250, 250 };
-	transform.rotation = 0;
-	transform.scale = 7;
-	
-	//players
-	std::unique_ptr<tlr::Player> player = std::make_unique<tlr::Player>(vl::Model{ "Player.txt" }, transform);
-	scene.Add(std::move(player));
-
-	// enemies
-	for (int i = 0; i < 1; i++) 
-	{
-		transform.position.x = vl::randomf(500);
-		transform.position.y = vl::randomf(500);
-		transform.rotation = vl::randomf(math::TWOPI);
-		transform.scale = vl::randomf(1, 7);
-
-		std::unique_ptr<tlr::Enemy> enemy = std::make_unique<tlr::Enemy>(vl::Model{ "Enemy.txt" }, transform, 6);
-		scene.Add(std::move(enemy));
-	
-	}
-
+	// initialize engine
 	vl::g_renderer.Initialize();
 	vl::g_inputSystem.Initialize();
 	vl::g_audioSystem.Initialize();
 
 	// create window
 	vl::g_renderer.CreateWindow("Gaming", 500, 500);
-	vl::g_renderer.setClearColor(vl::Color{ 51, 51, 51, 255 });
-	
-	// font
-	vl::Font* font = new vl::Font("Fonts/Arcade.ttf", 100);
-	
-	// text
-	vl::Text title(font);
-	title.Create(vl::g_renderer, "Game", { 255, 150, 255, 255 });
+	vl::g_renderer.setClearColor(vl::Color{0, 0, 0, 255 });
 
-	// audio
-	vl::g_audioSystem.AddAudio("laser", "idk.wav");
-
-	float spawnTimer = 2;
-
-	bool quit = false;
-	while (!quit)
 	{
-		// update
-		vl::g_inputSystem.Update();
-		vl::g_audioSystem.Update();
-		vl::g_time.Tick();
+		// create game
+		ThreeLaneRunner game;
+		game.Initialize();
 
-		if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
-
-		// spawn enemies
-		spawnTimer -= vl::g_time.deltaTime;
-		if (spawnTimer <= 0)
+		bool quit = false;
+		while (!quit)
 		{
-			spawnTimer = vl::random(10);
-			transform.position.x = vl::randomf(500);
-			transform.position.y = vl::randomf(500);
-			transform.rotation = vl::randomf(math::TWOPI);
-			transform.scale = vl::randomf(1, 7);
+			// update
+			vl::g_time.Tick();
+			vl::g_inputSystem.Update();
+			vl::g_audioSystem.Update();
 
-			std::unique_ptr<tlr::Enemy> enemy = std::make_unique<tlr::Enemy>(vl::Model{ "Enemy.txt" }, transform, 6);
-			scene.Add(std::move(enemy));
+			if (vl::g_inputSystem.GetKeyDown(vl::key_escape)) quit = true;
+
+			game.Update();
+
+			//render
+			vl::g_renderer.BeginFrame();
+
+			game.Draw(vl::g_renderer);
+
+			vl::g_renderer.EndFrame();
 		}
-
-		scene.Update();
-
-		//render
-		vl::g_renderer.BeginFrame();
-
-		scene.Draw(vl::g_renderer);
-		title.Draw(vl::g_renderer, { 150, 10 });
-
-		vl::g_renderer.EndFrame();
 	}
 
-	delete font;
 	vl::g_renderer.Shutodwn();
 	vl::g_audioSystem.Shutdown();
 }

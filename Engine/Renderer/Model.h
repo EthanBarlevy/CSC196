@@ -22,8 +22,10 @@ namespace vl
 
 		float GetRadius() { return m_radius; }
 
+		Color& GetColor() { return m_color; }
+
 	private:
-		vl::Color m_color{0, 0, 0, 0};
+		Color m_color{0, 0, 0, 0};
 		std::vector<vl::Vector2> m_points;
 
 		float m_radius = 0;
