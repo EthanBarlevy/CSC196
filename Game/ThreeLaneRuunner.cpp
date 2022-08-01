@@ -22,6 +22,7 @@ void ThreeLaneRunner::Initialize()
 	vl::g_audioSystem.AddAudio("laser", "idk.wav");
 	vl::g_audioSystem.AddAudio("explosion", "Explosion2.wav");
 	vl::g_audioSystem.AddAudio("coin", "Pickup_Coin.wav");
+	vl::g_audioSystem.AddAudio("neverHeardOfThisBefore", "bgm.mp3");
 
 	// transforms
 	vl::Transform transform;
@@ -33,6 +34,8 @@ void ThreeLaneRunner::Initialize()
 	std::unique_ptr<tlr::Player> player = std::make_unique<tlr::Player>(vl::Model{ "Player.txt" }, transform);
 	m_scene->Add(std::move(player));
 
+	// idk what you are talking about this is a completely original song
+	vl::g_audioSystem.PlayAudio("neverHeardOfThisBefore", true);
 }
 
 void ThreeLaneRunner::Shutdown()
